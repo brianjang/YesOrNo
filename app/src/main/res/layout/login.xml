@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#aaffffff"
+    >
+
+    <!--for user name field-->
+    <TextView
+        android:id="@+id/usernameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:padding="16dp"
+        android:text="@string/username"
+        android:textColor="#ff222222"
+        android:textSize="18dp"
+        />
+
+    <EditText
+        android:id="@+id/usernameEntry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_toRightOf="@id/usernameLabel"
+        android:layout_alignBaseline="@id/usernameLabel"
+        android:inputType="textEmailAddress"
+        />
+
+    <!--for password field-->
+    <TextView
+        android:id="@+id/passwordLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:padding="16dp"
+        android:layout_below="@id/usernameLabel"
+        android:text="@string/password"
+        android:textColor="#ff222222"
+        android:textSize="18dp"
+        />
+
+    <EditText
+        android:id="@+id/passwordEntry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_toRightOf="@id/passwordLabel"
+        android:layout_alignBaseline="@id/passwordLabel"
+        android:inputType="textPassword"
+        />
+
+    <!--for login button-->
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/passwordLabel"
+        android:text="@string/login"
+        android:onClick="onLoginBtnClicked"
+        />
+
+    <!--for sign up button-->
+    <Button
+        android:id="@+id/signupBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loginBtn"
+        android:text="@string/signup"
+        android:onClick="onSignupBtnClicked"
+        />
+</RelativeLayout>

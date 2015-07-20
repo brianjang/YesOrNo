@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableRow>
+        <EditText
+            android:id="@+id/questionEntry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/question_hint"
+            />
+
+        <View
+            android:layout_height="10dp"
+            android:background="#0000ff"
+            />
+    </TableRow>
+
+    <TableRow>
+        <Button
+            android:id="@+id/receiverBtn"
+            android:text="@string/receiver"
+            />
+        <View
+            android:layout_height="10dp"
+            android:background="#0000ff"
+            />
+    </TableRow>
+
+    <TableRow>
+        <Button
+            android:id="@+id/sendBtn"
+            android:text="@string/send"
+            />
+        <View
+            android:layout_height="10dp"
+            android:background="#0000ff"
+            />
+    </TableRow>
+
+</TableLayout>
