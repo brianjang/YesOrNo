@@ -14,13 +14,12 @@ import android.view.ViewGroup;
 
 public class CustomLayoutinflater extends View {
 
-    View view;
+    View mView;
 
     public CustomLayoutinflater(Context context, View view, int layoutId) {
         super(context);
 
         LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        view = mInflater.inflate(layoutId, (ViewGroup) view, true);
+        mView = mInflater.inflate(layoutId, (ViewGroup) view, true);
     }
-
 }

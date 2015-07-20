@@ -40,6 +40,12 @@
                     android:id="@+id/sendBtn"
                     android:text="@string/send"
                     />
+
+                <Button
+                    android:id="@+id/logoutBtn"
+                    android:text="@string/logout"
+                    />
+
                 <View
                     android:layout_height="10dp"
                     android:background="#0000ff"

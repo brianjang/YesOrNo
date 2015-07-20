@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -17,6 +18,10 @@ public class MainActivity extends ActionBarActivity {
 
     private static int BASE_CODE = 1000;
     public static final int REQUEST_CODE_LOGOUT = BASE_CODE + 1;
+
+    public static final String KEY_USER_NAME = "username";
+
+    EditText userName_ET;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,17 +66,32 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
+//    private void inflateLoginLayout_V2() {
+//        RelativeLayout loginLayout = (RelativeLayout)findViewById(R.id.loginLayout);
+//        CustomLayoutinflater loginView = new CustomLayoutinflater(this, loginLayout, R.layout.login);
+//        View _view = loginView.getCustomView();
+//        Button loginBtn = (Button)_view.findViewById(R.id.loginBtn);
+//        Button signupBtn = (Button)_view.findViewById(R.id.signupBtn);
+////        EditText userName_ET = (EditText)_view.findViewById(R.id.usernameEntry);
+//        userName_ET = (EditText)_view.findViewById(R.id.usernameEntry);
+//    }
+
     private void inflateLoginLayout_V2() {
         RelativeLayout loginLayout = (RelativeLayout)findViewById(R.id.loginLayout);
         CustomLayoutinflater loginView = new CustomLayoutinflater(this, loginLayout, R.layout.login);
-
         Button loginBtn = (Button)findViewById(R.id.loginBtn);
-        //TODO intent for question
         Button signupBtn = (Button)findViewById(R.id.signupBtn);
+//        EditText userName_ET = (EditText)_view.findViewById(R.id.usernameEntry);
+        userName_ET = (EditText)findViewById(R.id.usernameEntry);
     }
 
     public void onLoginBtnClicked(View v) {
+        String username = userName_ET.getText().toString();
+
         Intent intent = new Intent(getApplicationContext(), Question.class);
+        UserData data = new UserData(username); //create parcelable instance
+        intent.putExtra(KEY_USER_NAME, data);
+
         startActivityForResult(intent, REQUEST_CODE_LOGOUT);
     }
 
@@ -80,7 +100,7 @@ public class MainActivity extends ActionBarActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == REQUEST_CODE_LOGOUT) { //when user logout button
-            Toast toast = Toast.makeText(this, "onActivityResult() 메소드가 호출됨. 요청코드 : " + requestCode + ", 결과코드 : " + resultCode, Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(this, "onActivityResult() requestCode : " + requestCode + ", resultCode : " + resultCode, Toast.LENGTH_LONG);
             toast.show();
         }
     }

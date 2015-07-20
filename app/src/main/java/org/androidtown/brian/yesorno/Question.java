@@ -1,17 +1,35 @@
 package org.androidtown.brian.yesorno;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 
 public class Question extends ActionBarActivity {
+
+    public static final String KEY_USER_NAME = "username";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+
+        Button logoutBtn = (Button)findViewById(R.id.logoutBtn);
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent resultIntend = new Intent();
+                setResult(RESULT_OK, resultIntend);
+                finish();
+            }
+        });
+
+    processIntent();
     }
 
     @Override
@@ -34,5 +52,14 @@ public class Question extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void processIntent() {
+        Bundle bundle = getIntent().getExtras();
+
+        UserData data = (UserData)bundle.getParcelable(KEY_USER_NAME);
+
+        Toast toast = Toast.makeText(this, "processIntent() data : " + data.getUsername(), Toast.LENGTH_LONG);
+        toast.show();
     }
 }
