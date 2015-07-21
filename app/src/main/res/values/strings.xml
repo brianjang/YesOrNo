@@ -21,5 +21,9 @@
     <string name="logout">Logout</string>
     <string name="title_activity_questions">Question</string>
     <string name="title_activity_question">Question</string>
-    
+
+    <!--for exit dialog-->
+    <string name="exit">Exit?</string>
+    <string name="exit_message">Do you want exit?</string>
+    <string name="exit_cancel">Log out is canceled.</string>
 </resources>

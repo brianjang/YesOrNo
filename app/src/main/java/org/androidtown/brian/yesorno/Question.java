@@ -1,5 +1,7 @@
 package org.androidtown.brian.yesorno;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -23,9 +25,11 @@ public class Question extends ActionBarActivity {
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent resultIntend = new Intent();
-                setResult(RESULT_OK, resultIntend);
-                finish();
+
+                AlertDialog dialog = createDialogBox();
+                dialog.show();
+
+
             }
         });
 
@@ -61,5 +65,32 @@ public class Question extends ActionBarActivity {
 
         Toast toast = Toast.makeText(this, "processIntent() data : " + data.getUsername(), Toast.LENGTH_LONG);
         toast.show();
+    }
+
+    private AlertDialog createDialogBox() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle(getResources().getString(R.string.exit));
+        builder.setMessage(getResources().getString(R.string.exit_message));
+
+        builder.setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent resultIntend = new Intent();
+                setResult(RESULT_OK, resultIntend);
+                finish();
+            }
+        });
+
+        builder.setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+//                there is nothing to do
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+
+        return dialog;
     }
 }
